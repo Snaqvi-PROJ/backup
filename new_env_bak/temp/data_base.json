@@ -1,0 +1,15 @@
+{ 
+ "1001" :
+    {
+      "patchname" : "Patch206_NC",
+      "env" : "INTEG12_E",
+      "target" : "INTER"
+    },
+
+  "1002" :
+    {
+      "patchname" : "PatchVCOPLMPSA-62333",
+      "env" : "TEST_E",
+      "target" : "ALL"
+    }
+}
