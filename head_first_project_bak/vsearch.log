@@ -1,0 +1,6 @@
+ImmutableMultiDict([('phrase', 'adiu'), ('letters', 'aeiou')])|127.0.0.1|Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:66.0) Gecko/20100101 Firefox/66.0
+ImmutableMultiDict([('phrase', 'lala'), ('letters', 'aeiou')])|127.0.0.1|Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:66.0) Gecko/20100101 Firefox/66.0
+ImmutableMultiDict([('letters', 'aeiou'), ('phrase', 'i am a deaf guy')])|127.0.0.1|Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:66.0) Gecko/20100101 Firefox/66.0
+ImmutableMultiDict([('phrase', 'this is example'), ('letters', 'aeiou')])|127.0.0.1|Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:66.0) Gecko/20100101 Firefox/66.0
+ImmutableMultiDict([('phrase', 'this is example'), ('letters', 'aeiou')])|127.0.0.1|Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:66.0) Gecko/20100101 Firefox/66.0|{'e', 'a', 'i'}
+ImmutableMultiDict([('phrase', 'jjjk'), ('letters', 'aeiou')])|127.0.0.1|Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:66.0) Gecko/20100101 Firefox/66.0|set()
