@@ -1,26 +1,24 @@
 from flask import Flask, render_template, request, redirect, escape
 from vsearch import search4letters
-from sqlite3 import connect
+from DBcm import UseDatabase
 
 app = Flask(__name__)
 
+app.config['dbconfig'] = 'vsearchlog.db'
+
 def log_request(req: 'flask_request', res: str) -> None:
   """ Log details of the web request and the resuts. """
-  conn = connect('vsearchlog.db')
-  cursor = conn.cursor()
-  _query = """insert into log
-              (phrase, letters, ip, browser_string, results)
-              values
-              (?, ?, ?, ?, ?)"""
-  cursor.execute(_query, (req.form['phrase'],
+
+  with UseDatabase(app.config['dbconfig']) as cursor:
+    _query = """insert into log
+                (phrase, letters, ip, browser_string, results)
+                values
+                (?, ?, ?, ?, ?)"""
+    cursor.execute(_query, (req.form['phrase'],
                           req.form['letters'],
                           req.remote_addr,
                           req.user_agent.browser,
                           res, ))
-  conn.commit()
-  cursor.close()
-  conn.close()
-
 
 @app.route('/')
 def hello() -> str:
@@ -44,6 +42,16 @@ def entry_page():
 
 @app.route('/viewlog')
 def view_the_log() -> 'html':
+  """ Display the contents of Databas as a HTML table """
+  with UseDatabase(app.config['dbconfig']) as cursor:
+    _query = """select phrase, letters, ip, browser_string, results from log"""
+    cursor.execute(_query)
+    contents = cursor.fetchall()
+
+  titles = ('Phrase', 'Letters', 'Remote_addr', 'User_agent', 'Results')
+  return render_template('/viewlog.html', the_title='View Log', the_row_titles=titles, the_data=contents, )
+
+  """
   contents = []
   with open('vsearch.log', 'r') as log:
     for line in log:
@@ -52,7 +60,7 @@ def view_the_log() -> 'html':
         contents[-1].append(escape(item))
   titles = ('Form Data', 'Remote_addr', 'User_agent', 'Results')
   return render_template('/viewlog.html', the_title='View Log', the_row_titles=titles, the_data=contents,)
-
+  """
 
 if __name__ == '__main__':
   app.run(debug=True)
