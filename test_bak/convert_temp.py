@@ -55,7 +55,7 @@ def _readfile(_arg):
         print(_ex2.args[1])
 """
 
-""""""
+"""
 class Saiferror(IOError):
     def __init__(self, arg):
         self.args = arg
