@@ -1,0 +1,28 @@
+find:
+
+-mmin -10 -> files that are modified in the last 10 mins.
+-mmin +10 -> files that are modified more than 10 mins ago.
+-mmin -5 -mmin +2 -> files that are modified more than 2 minutes ago, less than 5 min ago
+
+-mtime -10 -> files that are modified in the last 10 days.
+-mtime +10 -> files that are modified more than 10 days ago.
+-mtime -5 -mtime +2 -> files that are modified more than 2 days ago, less than 5 days ago
+
+[Note*]: amin, atime can be used as accessed minutes, accessed days
+[Note*]: cmin, ctime can be used as changed minutes, changed days
+
+-type f -> for files
+-type d -> for directory
+
+find . -size +5M -> find files more that 5 MB
+[Note*]: k, G can be used for kilobytes and gigabytes respectively
+
+-empty -> find empty files
+
+find . -perm 777 -> find files with permission 777
+
+find . -exec chmod 777 {} + -> exec change permission to 777
+
+-maxdeplth 2 -> search files in 2 directory levels
+
+

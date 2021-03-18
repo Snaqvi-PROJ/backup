@@ -1,0 +1,13 @@
+rsync <source> <destination> -> copy content from source to destination, not copying same stuff
+rsync -r <source> <destination> -> (-r) recursively copy the directory
+rsync -a <source> <destination> -> (-a) archive, restores permissions
+
+rsync -av --dry-run <source> <destination> -> (-v) verbose, (--dry-run) this is used to know before hand which files will be synced
+rsync -av <source> <destination> -> sync with verbose option
+rsync -av --delete <source> <destination> -> (--delete) to mirror the destination, sync source to destnation and it will also delete additional files at destination
+
+rsync -zaP <source> <user>@<server>:<destination> -> Use to send data from local to remote machine, (z) send compress data, (P) show progress
+rsync -zaP <user>@<server>:<source> <destination> -> to sync data from remote to local machine
+
+#END
+

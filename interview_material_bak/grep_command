@@ -1,0 +1,15 @@
+grep -w "name" file -> Search for exact word name
+
+-i -> ignore case and display name in file
+-n -> display line number of the search result
+-B 4 -> display 4 lines before the match
+-A 4 -> display 4 lines after the match
+-C 2 -> display 2 lines before and after the match
+-r -> recursive seatch the match in all the subdirectories
+
+-l -> display the files with matches and not the matches itself
+-c -> count number of matches found
+
+-P -> for using regular expression perl gnu
+
+grep -P "\d{3}-\d{3}-\d{3}" file -> Search for pattern like: 111-012-124

@@ -1,0 +1,23 @@
+curl localhost
+curl <website> -> Return response content website
+curl -i <website> -> Returns response header information like 200 OK, content/type, length, server info etc..
+
+GET:
+curl https://saifnaqvi.com/methods -> Send get data to website
+
+POST:
+curl -d "first=Saif&last=Naqvi" https://saifnaqvi.com/methods -> Send post (-d) data to website
+
+PUT:
+curl -X PUT -d "first=Adnan&last=Naqvi" https://saifnaqvi.com/methods -> Send update request (-X PUT) data
+
+DELETE:
+curl -X DELETE https://saifnaqvi.com/methods -> Send DELETE request (-X DELETE) data
+
+For authentication (pages that require user and password)
+curl -u saif:Sanqvi01 https://saifnaqvi.com/login
+
+For downloading a file use output (-o)
+curl -o file.jpg http://saifnaqvi.com/image1
+
+
