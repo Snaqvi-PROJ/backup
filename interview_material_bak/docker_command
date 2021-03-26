@@ -1,0 +1,11 @@
+# 
+# To push a image to docker hub
+# 1. Add the tag in repository
+   docker tag <image id> <login>/<repo name>
+   docker tag d1165f221234 snaqvi1610/testprojects
+#2. Login to the docker hub
+  docker login
+#3. Push image to the docker hub
+  docker push <login>/<repo name>:<tag>
+  docker push snaqvi1610/testproject:1.0
+
