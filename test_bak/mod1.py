@@ -4,7 +4,7 @@ def _f1(*argum):
 
 
 def _f2():
-  """ Second function """
+  """ Second  function """
   print(arglist)
 
 _f2()
