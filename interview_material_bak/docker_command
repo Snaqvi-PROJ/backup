@@ -1,3 +1,7 @@
+#
+# docker exec -it myjenkins bash
+
+##
 # 
 # To push a image to docker hub
 # 1. Add the tag in repository
@@ -9,8 +13,8 @@
   docker push <login>/<repo name>:<tag>
   docker push snaqvi1610/testproject:1.0
 
-#4. docker run a particular container, If image present locally-> runs container, if not-> pulls image from docker hun amd then runs
-  docker run -d -it -p 8080:8080 -p 50000:50000 jenkins :: 8080-> data port, 50000-> control port
+#4. docker run a particular container, If image present locally-> runs container, if not-> pulls image from docker hun and then run
+  docker run -d --name myjenkins -p 8080:8080 -p 50000:50000 -v /var/jenkins_home jenkins:2.60.3 :: 8080-> data port, 50000-> control port, v-> volume
  
 #5. Registry is the container managed by Docker which can be used to host private repositories.
 #   download private registries from docker
@@ -21,3 +25,8 @@
 
 #7. Push the image to repository
   docker push localhost:5000/centos
+
+## MAVEN ##
+#. Execute maven command:
+  docker run -it --rm --name my-maven-project -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:3.3-jdk-8 mvn clean install
+
