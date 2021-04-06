@@ -17,17 +17,17 @@ class User(db.Model):
   posts = db.relationship('Post', backref='author', lazy=True)
 
   def __repr__(self):
-    return User('{self.username}', '{self.email}', '{self.image_file}')
+    return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
 class Post(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   title = db.Column(db.String(100), nullable=False)
-  date_posted = db.Column(db.DATETIME, nullable=False, default=datetime.date)
+  date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
   content = db.Column(db.Text, nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
   def __repr__(self):
-    return Post('{self.title}', '{self.date_posted}')
+    return f"Post('{self.title}', '{self.date_posted}')"
 
 
 
@@ -62,7 +62,7 @@ def about():
 def register():
   form = RegistrationForm()
   if form.validate_on_submit():
-    flash('Account created !', 'success')
+    flash(f'Account created for {form.username.data}!', 'success')
     return redirect(url_for('home'))
   return render_template('register.html', title='Register', form=form)
 
