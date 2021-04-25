@@ -60,3 +60,7 @@
 # Running docker container on a network
   docker run -d -it --network new_nw ubuntu:latest /bin/bash
 
+#
+1. Volumes can be created in the docker run command directly
+   But cannot be created in docker-compose.yml, we need separate volumes section in docker-compose.yml do do that.
+
