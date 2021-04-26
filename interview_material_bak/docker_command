@@ -69,3 +69,5 @@
   docker-compose up 
 # to remove network created and stop the container
   docker-compose down
+
+# Test for ssh
