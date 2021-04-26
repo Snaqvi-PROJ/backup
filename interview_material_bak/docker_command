@@ -64,3 +64,8 @@
 1. Volumes can be created in the docker run command directly
    But cannot be created in docker-compose.yml, we need separate volumes section in docker-compose.yml do do that.
 
+
+# docker-compose to execute docker-compose.yml
+  docker-compose up 
+# to remove network created and stop the container
+  docker-compose down
