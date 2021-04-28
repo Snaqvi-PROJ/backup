@@ -1,0 +1,24 @@
+1. Ansible is simple open source IT engine which automates application deployment,
+intra service orchestration, cloud provisioning and many other IT tools.
+
+2. Ansible is agentless,
+
+3. Ansible connect to the nodes and then pushes small programs called "ansible modules".
+Ansible runs anible modules on nodes and then removes them
+
+4. inventory are host files in which hosts are grouped and ansible can control the actions on specific group in playbook
+
+5. Control machine: machine from where we could manage other machines.
+   Remote machine: machines which are handled/controled by control machine.
+
+6. In playbooks, data is represented in yaml format 'key:value'
+
+7. Adhoc commands are commands which could be run individually to perform quick functions,
+   These are 1 time usage commands
+
+Example:
+  ansible -i hosts all -m ping  # Ping all the hosts from all group present in hosts inventory file
+  ansible -i hosts all -m ping --limit host2  # Same command, but will run on a specific host.
+  ansible abc -a "/sbin/reboot" -f 12  # To reboot all the company servers in 12 parallel forks
+  ansible abc -m yum -a "name = demo-tomcat-1 state = present"  # Checks if a yum package is installed or not
+  ansible abc -m copy -a "src = /etc/yum.conf dest = /tmp/yum.conf" # copy a file to servers in group abc
