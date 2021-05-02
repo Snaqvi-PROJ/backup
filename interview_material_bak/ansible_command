@@ -1,3 +1,4 @@
+
 1. Ansible is simple open source IT engine which automates application deployment,
    intra service orchestration, cloud provisioning and many other IT tools.
 
@@ -21,7 +22,11 @@ Example:
   ansible -i hosts all -m ping --limit host2  # Same command, but will run on a specific host.
   ansible abc -a "/sbin/reboot" -f 12  # To reboot all the company servers in 12 parallel forks
   ansible abc -m yum -a "name = demo-tomcat-1 state = present"  # Checks if a yum package is installed or not
-  ansible abc -m copy -a "src = /etc/yum.conf dest = /tmp/yum.conf" # copy a file to servers in group abc
+  ansible abc -m copy -a "src = /etc/yum.conf dest = /tmp/yum.conf"  # copy a file to servers in group abc
+  ansible webservers -m file -a "dest=/path/to/c mode=755 owner=mdehaan group=mdehaan state=directory"  # Create a directory and provide pemissions
+  ansible all -m user -a "name=foo password=<crypted password here>"  # Create user
+  ansible all -m user -a "name=foo password=<crypted password here>"  # Restarting service
+  ansible-playbook first.yml --connection=local
 
 8. There are ansible related keywords, and ansible sytax:
    ansible_host, ansible_connection, ansible_user, ansible_os_family, ansible_network_os etc
