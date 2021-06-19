@@ -22,7 +22,14 @@ Example:
   ansible -i hosts all -m ping --limit host2  # Same command, but will run on a specific host.
   ansible abc -a "/sbin/reboot" -f 12  # To reboot all the company servers in 12 parallel forks
   ansible abc -m yum -a "name = demo-tomcat-1 state = present"  # Checks if a yum package is installed or not
+  ansible abc -m setup  # Check for facts on remote machines
+  ansible abc -m setup -a "filter=ansible_architecture"  # Check for facts on remote machines using particular filter
   ansible abc -m copy -a "src = /etc/yum.conf dest = /tmp/yum.conf"  # copy a file to servers in group abc
+  ansible abc -m fetch -a "src = /etc/yum.conf dest = /tmp/yum.conf"  # fetch a file to master servers from remote for group abc in recursive manner
+  ansible remote_server -m fetch -a "src=/tmp/fetch.txt dest=/tmp/{{ inventory_hostname }}_fetch.txt flat=yes" -k  # Flat fetch, no recursive 
+  ansible remote_server -m fetch -a "src=/tmp/fetch.txt dest=/tmp/{{ inventory_hostname }}_fetch.txt"  # Fetch file 
+  ansible remote_server -m yum -a "name=git state=latest"  # Install git package on remote hosts
+  ansible remote_server -m yum -a "name=git state=latest" -b  # Install git package on remote hosts by doing sudo
   ansible webservers -m file -a "dest=/path/to/c mode=755 owner=mdehaan group=mdehaan state=directory"  # Create a directory and provide pemissions
   ansible all -m user -a "name=foo password=<crypted password here>"  # Create user
   ansible all -m user -a "name=foo password=<crypted password here>"  # Restarting service
@@ -30,3 +37,66 @@ Example:
 
 8. There are ansible related keywords, and ansible sytax:
    ansible_host, ansible_connection, ansible_user, ansible_os_family, ansible_network_os etc
+
+# Modules:
+  
+with_items:- Use to pass a list of items to the command, Example:- To install list of packages, we can use this way
+  #yum: name={{ item }} state=present
+  #with_items:
+  # - httpd
+  # - php
+  # - php-mysql
+
+git:- Pass git repository, dest:- pass destination where to deploy/pull
+  #git: repo={{ repository }} dest=/var/www/html/
+
+template:- Configure file by replacing vars and copying to the destination
+  #template: src=index.php.j2 dest=/var/www/html/index.php
+
+include:- Call/Execute other yml in the directory
+  #- include: install_httpd.yml
+  #- include: copy_code.yml
+
+service:- Call service command
+  #service: name=firewalld state=started enabled=yes
+
+
+## Advanced questions: ##
+#  tags:- When there’s an extensive playbook involved, sometimes it’s more expedient to run just a part of it as opposed to the entire thing.
+#  That’s what tags are for.
+
+# Access shell environment:-
+  local_home:”{{lookup(‘env’,’HOME’)}}”
+
+# Create encrypted files:-
+  ansible-vault create filename.yaml
+
+# Facts: Information about managed nodes like: os, distribution, release, processor etc
+  There are two kinds of facts:
+  1. Default facts
+  2. Custom facts
+
+Custom facts are created by creating a file in /etc/ansible/facts.d/<filename>.fact on managed nodes.
+These files can be shell/python or any other script, but they should produce dictionary like data as output like:
+    { env_type: PROD,
+      env_alias: alias
+    }
+
+refer "/etc/ansible/facts.d/host_info.fact" on ansible control container
+
+Custom facts are loaded on control machine as:
+  ansible web -m setup -a "filter=ansible_local"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
