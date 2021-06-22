@@ -1,0 +1,10 @@
+---
+
+- hosts: localhost
+  name: variable change using file
+  vars_files:
+  - var_file
+
+  tasks:
+  - name: check variable value
+    command: /tmp/check.sh {{ var_name }} {{ var_des }}

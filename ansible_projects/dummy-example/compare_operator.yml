@@ -1,0 +1,20 @@
+---
+
+- name: example for compare operators
+  hosts: localhost
+  vars:
+  - x: 3
+  - y: 5
+
+  tasks:
+  - name: debug mod
+    debug:
+      msg:
+      - "x is: {{ x }}, y is: {{ y }}"
+      - "x == y: {{ x == y }}"
+      - "x != y: {{ x != y }}"
+      - "x < y: {{ x < y }}"
+      - "x > y: {{ x > y }}"
+      - "x <= y: {{ x <= y }}"
+      - "x >= y: {{ x >= y }}"
+      

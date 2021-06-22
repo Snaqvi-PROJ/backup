@@ -1,0 +1,6 @@
+---
+
+- name: deploying same on db
+  yum:
+    name: /home/saif/ansible-stuff/basic-example/src/hello-world-1-0.x86_64.rpm
+    state: present

@@ -1,0 +1,29 @@
+---
+
+- name: copy a file
+  hosts: common
+  tags: copy_config
+
+  tasks:
+    - name: copy operation
+      copy:
+        src: /home/saif/ansible-stuff/basic-example/src/app.conf
+        dest: /home/saif/InstallDir/app.conf
+
+
+- name: install package
+  hosts: common
+  tags: ins_pkg
+
+  roles:
+    - app
+
+
+- name: start service
+  hosts: web
+  tags: start_service
+
+  tasks:
+    - command: "/home/saif/InstallDir/hello-world.sh"
+
+

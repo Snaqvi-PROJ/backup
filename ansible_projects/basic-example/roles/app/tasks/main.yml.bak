@@ -1,0 +1,6 @@
+---
+
+- name: deploying same on db
+  become: true
+  become_user: root
+  command: "rpm -ivh /home/saif/ansible-stuff/basic-example/src/hello-world-1-0.x86_64.rpm"

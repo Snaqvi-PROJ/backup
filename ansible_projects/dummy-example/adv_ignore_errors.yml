@@ -1,0 +1,36 @@
+---
+
+- name: testing
+  hosts: web_server
+
+  tasks:
+
+  - block:
+
+    - name: install pkg on 172.17.0.3
+      yum:
+        name: /home/saif/ansible-stuff/basic-example/src/hello-world-1-0.x86_64.rpm
+        state: present
+
+    - name: start service
+      command: /home/saif/InstallDir/hello-world.sh
+
+    - command: "rpm -qa hello-world"
+
+    when: ansible_default_ipv4['address']=='172.17.0.3'
+
+
+  - name: install pkg on 172.17.0.4
+    yum:
+      name: /home/saif/ansible-stuff/basic-example/src/hello-world-2-0.x86_64.rpm
+      state: present
+    when: ansible_default_ipv4['address']=='172.17.0.4'
+
+  - name: start service
+    command: /home/saif/InstallDir/hello-world.sh
+    when: ansible_default_ipv4['address']=='172.17.0.4'
+
+  - command: "rpm -qa hello-world"
+
+  - debug:
+      msg: "{{ ansible_default_ipv4['address'] }}"

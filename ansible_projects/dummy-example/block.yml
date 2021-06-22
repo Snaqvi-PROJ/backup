@@ -1,0 +1,54 @@
+---
+
+
+- name: test block 1
+  hosts: localhost
+  tags: task1
+
+  tasks:
+
+  - command: "ls -lrt /tmp/log"
+    ignore_errors: yes
+    register: chk1
+  - debug: var=chk1
+    
+  - command: "ls -lrt /tmp/log2"
+    ignore_errors: yes
+    register: chk2
+  - debug: var=chk2
+
+  - command: "ls -lrt /tmp/saif"
+    ignore_errors: yes
+    register: chk3
+  - debug: var=chk3
+
+
+
+
+- name: test block 2
+  hosts: localhost
+  tags: task2
+
+  tasks:
+
+  - block:
+
+    - command: "ls -lrt /tmp/log"
+      register: chk1
+    - debug: var=chk1
+    
+    - command: "ls -lrt /tmp/log2"
+      register: chk2
+    - debug: var=chk2
+
+    - command: "ls -lrt /tmp/saif"
+      register: chk3
+    - debug: var=chk3
+
+    ignore_errors: yes
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+---
+
+- hosts: localhost
+  vars:
+    x: 5
+
+  tasks:
+  - name: simple var
+    tags: deb
+    debug:
+      msg:
+      - "This is a dummy message: {{ x }}"
+
+  - name: take argument from command line
+    tags: deb_cmd
+    debug:
+      msg:
+      - "This is coming from command line: {{ y }}"
+
+
+  - name: take sequential argument from command line 
+    tags: deb_cmd_seq
+    debug:
+      msg:
+      - "Name is : {{ arg1 }}"
+      - "Email is : {{ arg2 }}"
+
+
+  - name: take argument in list format
+    tags: deb_cmd_lst
+    debug:
+      msg:
+      - "Passed numbers are : {{ arglist }}"

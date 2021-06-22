@@ -1,0 +1,13 @@
+---
+
+- hosts: localhost
+  name: variable test
+  vars:
+    - var_name: newvariable
+    - var_des: othervariable
+
+  tasks:
+
+  - name: check variable value
+    command: ./check.sh {{ var_name }} {{ var_des }}
+
