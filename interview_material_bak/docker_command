@@ -1,11 +1,73 @@
+#
+# docker exec -it myjenkins bash
+
+##
+# docker build image
+  docker build -t testenv:0.1 -f testenv.dockerfile .
 # 
 # To push a image to docker hub
 # 1. Add the tag in repository
-   docker tag <image id> <login>/<repo name>
-   docker tag d1165f221234 snaqvi1610/testprojects
+  docker tag <image id> <login>/<repo name>
+  docker tag d1165f221234 snaqvi1610/testprojects
 #2. Login to the docker hub
   docker login
 #3. Push image to the docker hub
   docker push <login>/<repo name>:<tag>
   docker push snaqvi1610/testproject:1.0
 
+#4. docker run a particular container, If image present locally-> runs container, if not-> pulls image from docker hun and then run
+  docker run -d --name myjenkins -p 8080:8080 -p 50000:50000 -v /var/jenkins_home jenkins:2.60.3 :: 8080-> data port, 50000-> control port, v-> volume
+ 
+#5. Registry is the container managed by Docker which can be used to host private repositories.
+#   download private registries from docker
+  docker run -d -p 5000:5000 --name registry registry:2
+
+#6. Create tag of image in localhost:5000/centos
+  docker tag 67591570dd29 localhost:5000/centos
+
+#7. Push the image to repository
+  docker push localhost:5000/centos
+
+## MAVEN ##
+#. Execute maven command:
+  docker run -it --rm --name my-maven-project -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:3.3-jdk-8 mvn clean install
+
+
+
+
+#######
+
+# building an image
+# create Dockerfile
+# Fill with args
+# Command:
+  docker build –t="mywebserver" .
+
+
+#####
+
+# Container linking
+# creating reca container [ubuntu], and linking myjenkins container to it
+  docker run --name reca --link myjenkins:alias-src -it ubuntu:latest
+
+##
+# Create volume:
+  docker volume create --name new_driver
+#
+# Create own network
+  docker network create --driver bridge new_nw
+#
+# Running docker container on a network
+  docker run -d -it --network new_nw ubuntu:latest /bin/bash
+
+#
+1. Volumes can be created in the docker run command directly
+   But cannot be created in docker-compose.yml, we need separate volumes section in docker-compose.yml do do that.
+
+
+# docker-compose to execute docker-compose.yml
+  docker-compose up 
+# to remove network created and stop the container
+  docker-compose down
+
+# Test for ssh

@@ -1,0 +1,15 @@
+---
+
+- name: showing verbosity level 2
+  hosts: localhost
+
+  tasks:
+
+  - name: simple debug
+    debug:
+      msg: 'this is a simple debug message'
+
+  - name: verbosity task
+    debug:
+      msg: this is verbosisty 2 message
+      verbosity: 2

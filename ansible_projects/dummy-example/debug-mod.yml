@@ -1,0 +1,19 @@
+---
+
+- hosts: localhost
+  name: testing debug module
+
+  tasks:
+
+    - name: 'testing debug where debug and message are in key:value format'
+      debug: msg="this is a test message"
+
+    - name: 'testing debug where message is in key:value format'
+      debug:
+        msg: runnning debug
+
+    - name: 'testing debug where messages are in list format'
+      debug:
+        msg:
+        - this is message 1
+        - this is message 2  

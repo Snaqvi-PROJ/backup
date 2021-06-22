@@ -1,0 +1,19 @@
+##
+## life cycle
+##
+
+git add . :: Add a directory
+git status -s :: Check what all are part of commit
+git commit -m 'comment' :: commit on local repo
+git push origin master :: To commit changes on the server repo
+   git push [remote] [branch] 
+##
+
+git branch [name] :: Create new branch
+git switch [name] :: Switch branch
+git push origin [name_of_your_new_branch] :: Push same branch on the remote server
+git remote add [name_of_your_remote] [name_of_your_new_branch] :: Create a remote
+
+##
+
+

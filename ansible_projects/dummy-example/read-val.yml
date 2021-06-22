@@ -1,0 +1,31 @@
+---
+
+- hosts: localhost
+  name: variable print
+
+  vars:
+    - var1: 'variable 1'
+    - var2: 'variable 2'
+
+
+  tasks:
+  - debug:
+      msg:
+      - "{{ var1 }}"
+      - "{{ var2 }}"
+
+
+- hosts: localhost
+  name: prompt and take variable from command line
+  tags: tag2
+
+  vars_prompt:
+  - name: user
+    prompt: enter the name
+    private: no
+
+  tasks:
+  - name: print username
+    debug:
+      msg:
+      - "Name is: {{ user }}"

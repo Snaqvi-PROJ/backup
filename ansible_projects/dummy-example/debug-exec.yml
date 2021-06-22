@@ -1,0 +1,11 @@
+#!/usr/bin/ansible-playbook
+
+- name: using direct execution
+  hosts: localhost
+
+  tasks:
+  - name: debug task
+    debug:
+      msg:
+      - '{{ inventory_hostname }}'
+      - 'this is message 2'

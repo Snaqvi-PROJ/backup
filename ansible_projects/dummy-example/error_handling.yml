@@ -1,0 +1,20 @@
+---
+
+- hosts: localhost
+
+  tasks:
+  - debug:
+      msg: "Error handling using block, rescue and always"
+
+  - block:
+    - name: command module
+      command: "ls -lrt /tmp/saif"
+      register: cmd_op
+
+    rescue:
+    - debug:
+        msg: "File not found"
+
+    always:
+    - debug:
+        msg: "This section is executed always"

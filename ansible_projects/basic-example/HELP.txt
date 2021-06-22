@@ -1,0 +1,8 @@
+- hosts: web
+  tags: rem_pkg
+
+  tasks:
+    - name: remove package
+      yum:
+        name: hello-world
+        state: absent
