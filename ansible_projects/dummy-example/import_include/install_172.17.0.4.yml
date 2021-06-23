@@ -1,0 +1,4 @@
+- name: install hello-world 2-0 on 172.17.0.4
+  yum:
+    name: /home/saif/ansible-stuff/basic-example/src/hello-world-2-0.x86_64.rpm
+    state: present

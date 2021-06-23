@@ -87,16 +87,41 @@ refer "/etc/ansible/facts.d/host_info.fact" on ansible control container
 Custom facts are loaded on control machine as:
   ansible web -m setup -a "filter=ansible_local"
 
+# Raw module: If we dont have python interpretor on any of the managed machines we can use raw module to execute the shell commnads:
+  ansible web_server -m raw -a "uptime"
+  ansible web_server -m raw -a "scp <>...<>.."
+
+# Read and write variable, refer: /home/saif/ansible-stuff/dummy-example/read-val.yml
+
+# We can pass different types of variables in different formats as command line arguments:
+  - scaler
+  - sequence
+  - map
+
+# Command to pass scaler variable cmd to script, refer: cmd_args.yml
+  ansible-playbook cmd_args.yml --tags deb_cmd --extra-vars "y=3" or
+  ansible-playbook cmd_args.yml --tags deb_cmd -e "y=3" or
+  ansible-playbook cmd_args.yml --tags deb_cmd -e "{'y': 56}"
 
 
+# Command to pass sequential vaiable list, refer: cmd_args.yml
+  ansible-playbook cmd_args.yml --tags deb_cmd_seq -e "arg1= 'Saif Naqvi' arg2='saif@gmail.com'" or
+  ansible-playbook cmd_args.yml --tags deb_cmd_seq -e "{'arg1': 'name$$##', 'arg2': 'saif@gmail.com'}"
+  
+# Command to pass list of values, refer: cmd_args.yml
+  ansible-playbook cmd_args.yml --tags deb_cmd_lst -e "{'arglist': [1,2,3,4, 5005]}"
 
+# Compare operator: <, >, ==, !=, <=, >=, refer compare_operator.yml for usage
 
+# Ansible code can be enclosed in blocks, refer block.yml
 
+# For error handling we use, block, rescue module, refer error_handling.yml
 
+# Create a file of ansible facts: ansible all -m gather_facts --tree /tmp/facts
 
+# import vs include, refer /home/saif/ansible-stuff/dummy-example/import_include directory
 
-
-
-
+  import: import cannot do dynamic variable substitution
+  include: include can do dynamic variable substitution
 
 
