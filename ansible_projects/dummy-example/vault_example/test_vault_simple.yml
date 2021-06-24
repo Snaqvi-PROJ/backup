@@ -1,0 +1,12 @@
+---
+
+- hosts: web_server
+  gather_facts: false
+  vars_files: vars_to_use.yml
+
+  tasks:
+  - debug:
+      msg:
+      - "Variable 1 is : {{ imp_variable_1 }}"
+      - "Variable 2 is : {{ imp_var2 }}"
+    

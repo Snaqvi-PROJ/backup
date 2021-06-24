@@ -68,8 +68,21 @@ service:- Call service command
 # Access shell environment:-
   local_home:”{{lookup(‘env’,’HOME’)}}”
 
-# Create encrypted files:-
-  ansible-vault create filename.yaml
+## VAULT ##
+# Create encrypted files: 
+    ansible-vault create filename.yaml
+# Make a file encrypted:
+    ansible-playbook encrypt test_vault_encrypted.yml
+# Execute encrypted yml using pass:
+    ansible-playbook test_vault_encrypted.yml --ask-vault-pass
+# View encrypted file
+    ansible-playbook view test_vault_encrypted.yml
+# Edit an encrypted file
+    ansible-playbook edit test_vault_encrypted.yml
+# Change a files vault password
+    ansible-playbook rkey test_vault_encrypted.yml
+
+##
 
 # Facts: Information about managed nodes like: os, distribution, release, processor etc
   There are two kinds of facts:
