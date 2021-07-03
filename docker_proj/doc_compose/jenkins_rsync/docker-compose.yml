@@ -1,0 +1,9 @@
+version: '3'
+services:
+  jen:
+    image: jenkins:2.60.3
+    ports:
+    - "8080:8080"
+  rsnc:
+    image: rsync:0.1
+
