@@ -65,7 +65,9 @@
    But cannot be created in docker-compose.yml, we need separate volumes section in docker-compose.yml do do that.
 
 
-# docker-compose to execute docker-compose.yml
+# Build image/images using docker-compose
+  docker-compose build
+# docker-compose to build and execute docker-compose.yml
   docker-compose up 
 # to remove network created and stop the container
   docker-compose down
@@ -74,5 +76,14 @@
   docker commit 40caf8133ba0 flask-docker-demo-app:0.3
   docker commit <container which is modified> <new image tag>
 
+# kill a container:
+   docker kill <containerid>
 
+
+
+# Export a docker image into a tar file
+  docker export --ouput "image_name.tar" <container id>
+
+# Import the content of a image tar file into your local repo
+  docker import <name of the tarfile>
 
