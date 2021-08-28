@@ -16,4 +16,13 @@ git remote add [name_of_your_remote] [name_of_your_new_branch] :: Create a remot
 
 ##
 
+# Create a ssh key for git
 
+1. Create ssh key
+   ->ssh-keygen -t ed25519 -C "saifnaqviit3019@gmail.com"
+   -> ed25519: is the algo
+2. Start agent in backgroud: eval
+   -> eval "$(ssh-agent -s)"
+3. add key to ssh-agent
+   -> ssh-add ~/.ssh/id_ed25519
+4. goto github.com/Snaqvi-PROJ -> Profile -> Settings -> SSH and GPG keys -> New ssh key -> Add ssh key -> confirm passwordwq
