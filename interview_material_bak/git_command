@@ -26,3 +26,9 @@ git remote add [name_of_your_remote] [name_of_your_new_branch] :: Create a remot
 3. add key to ssh-agent
    -> ssh-add ~/.ssh/id_ed25519
 4. goto github.com/Snaqvi-PROJ -> Profile -> Settings -> SSH and GPG keys -> New ssh key -> Add ssh key -> confirm passwordwq
+
+# Create personal access token:
+1. Github -> Settings -> Developer Settings -> personal access tokens
+2. Select Expiration, Select repo
+3. Generate token
+4. Copy the token to wherever is required.
