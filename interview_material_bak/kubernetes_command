@@ -1,0 +1,84 @@
+# To view cluster details:
+  kubectl cluster info
+
+# To view nodes in cluster:
+  kubectl get nodes
+
+You can create and manage a deplyment using kubectl command. Kubectl uses the Kubernetes API to interact with the cluster.
+
+# Help for kubectl command:
+  kubectl get nodes --help
+
+# Deployment command:
+  kubectl create deployment
+
+  example: kubectl create deployment kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1
+
+# List your deployment:
+  kubectl get depployments
+
+[Note]*: Pods that are running inside Kubernetes are running on a private, isolated network. By default they are visible from other pods and services within the same kubernetes cluster, but not outside that network. When we use kubectl, we're interacting through an API endpoint to communicate with our application.
+
+---------------------
+POD:
+
+[Note]*: Once a deployment is created. Kubernetes created a pod to host your application. A pod is a one or more application containers.
+They also have:
+-> Shared storage, as volumes.
+-> Networking as a unique IP
+-> Other container info
+---------------------
+
+
+---------------------
+NODE:
+
+[Note]*: A pod always runs on a node. Node is a worker machine, can either be virtual or a physical machine.
+The control plane's automatic scheduling takes into account the available resources on each Node.
+-> kubelet, a process responsible for communication between control plane and nodes.
+-> Container runtime (docker)
+---------------------
+
+kubectl get - list resources
+kubectl describe - show detailed information about a resource
+kubectl logs - print the logs from a container in a pod
+kubectl exec - execute a command on a container in a pod
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+---
+
+- hosts: db_server
+  name: Simple yml to understand import_vars and include_vars
+
+  tasks:
+  - include_vars: requirements_for_{{ ansible_default_ipv4['address'] }}.yml
+  - debug:
+      msg: "Package name={{ pkg }}"
+
+
+

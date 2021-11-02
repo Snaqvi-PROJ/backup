@@ -16,7 +16,7 @@
   docker push snaqvi1610/testproject:1.0
 
 #4. docker run a particular container, If image present locally-> runs container, if not-> pulls image from docker hun and then run
-  docker run -d --name myjenkins -p 8080:8080 -p 50000:50000 -v /var/jenkins_home jenkins:2.60.3 :: 8080-> data port, 50000-> control port, v-> volume
+  docker run -d --name myjenkins -p 8080:8080 -p 50000:50000 -v /var/jenkins_home jenkins:2.60.3 :: 8080-> data port, 50000-> control port, v-> volume, d-> detached mode
  
 #5. Registry is the container managed by Docker which can be used to host private repositories.
 #   download private registries from docker
@@ -31,7 +31,7 @@
 ## MAVEN ##
 #. Execute maven command:
   docker run -it --rm --name my-maven-project -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:3.3-jdk-8 mvn clean install
-
+  it-> interactive terminal, e-> environmental variables, --net-> add the docker network
 
 
 
@@ -65,9 +65,25 @@
    But cannot be created in docker-compose.yml, we need separate volumes section in docker-compose.yml do do that.
 
 
-# docker-compose to execute docker-compose.yml
+# Build image/images using docker-compose
+  docker-compose build
+# docker-compose to build and execute docker-compose.yml
   docker-compose up 
 # to remove network created and stop the container
   docker-compose down
 
-# Test for ssh
+# docker commit: Create new image from container, This is done when one makes changes directly in the container and want to create an image from it
+  docker commit 40caf8133ba0 flask-docker-demo-app:0.3
+  docker commit <container which is modified> <new image tag>
+
+# kill a container:
+   docker kill <containerid>
+
+
+
+# Export a docker image into a tar file
+  docker export --ouput "image_name.tar" <container id>
+
+# Import the content of a image tar file into your local repo
+  docker import <name of the tarfile>
+

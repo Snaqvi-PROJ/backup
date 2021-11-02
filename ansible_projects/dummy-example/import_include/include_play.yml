@@ -1,0 +1,14 @@
+---
+
+- hosts: all_server
+
+  tasks:
+
+  - include_tasks: install_{{ ansible_default_ipv4['address'] }}.yml
+    when: ansible_default_ipv4['address']=='172.17.0.3'
+
+
+  - import_tasks: install_172.17.0.4.yml
+    when: ansible_default_ipv4['address']=='172.17.0.4'
+
+ 

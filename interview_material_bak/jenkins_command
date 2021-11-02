@@ -1,0 +1,68 @@
+
+
+# Why jenkins:
+  It makes it easy for developers to implement updates to the code and for users to get the latest version quickly. Jenkins uses plugins to  accomplish Continuous Integration. Plugins essentially allow DevOps stages to be integrated.
+
+# Name jenkins suite essential plugin
+  The Jenkin suite’s essential plugins are Docker, Jira, Slack Notification, Maven, Amazon E2C, jUnit, Pipeline, Mailer, and Greenballs.
+
+# Explain what groovy means
+  Jenkins uses a domain-specific language (DSL) called “Groovy” inside a Pipeline Project (read plugin), which will describe a new pipeline as just a script. That single script may articulate a flow that would typically take several “standard” Jenkins jobs chained around.
+
+# Start jenkins from command line
+  1. Download jenkins.war
+  2. Open terminal
+  3. Execute: java -jar jenkins.war
+  4. Browse: http://localhost:8080
+
+# Jenkins pipeline
+  Pipeline is a set of interconnected jobs that are executed one after another.
+
+# Types of pipeline
+  1. CI-CD pipeline
+  2. Scripted pipeline
+  3. Declarative pipeline
+
+# What is JENKINS_HOME directory used for
+  JENKINS_HOME contain setting, logs and configuration for jenkins and plugin. You can backup JENKINS_HOME time to time.
+
+# What is DSL
+  Jenkins DSL (Domain Specific Language) is a plugin that allows jobs to be specified programmatically but in a human-readable manner.
+
+
+# Continuous Integration:
+  Continuous Integration (CI) is the practice of continuously incorporating modifications into the essential program at all phases of the  distribution pipeline after being validated in a prototype environment. Jenkins and Bamboo servers make use of CI.
+
+# Continuous Delivery
+  Continuous Delivery is the manual delivery of code (shipping) to a specific test, integration, or manufacturing area.
+
+# Continuous Deployment
+  Continuous Deployment is the automated release of code into the staging or development process after it has passed the CI stage’s testing.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Jenkins CLI, run a build:
+  java -jar jenkins-cli.jar -s <jenkins url> -auth <jenkins user>:<jenkins password> build <Jenkins project>
+  
+  java -jar jenkins-cli.jar -s http://172.17.0.2:8080/jenkins/ -auth saif:Snaqvi01 build Maven-project
+
+

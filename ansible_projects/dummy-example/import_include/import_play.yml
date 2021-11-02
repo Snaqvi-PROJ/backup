@@ -1,0 +1,14 @@
+---
+
+- hosts: all_server
+
+  tasks:
+
+  - import_tasks: install_172.17.0.3.yml # We cannot use {{/home/saif/ansible-stuff/dummy-example/import_include}} variable, refer include_play.yml for details
+    when: ansible_default_ipv4['address']=='172.17.0.3'
+
+
+  - import_tasks: install_172.17.0.4.yml
+    when: ansible_default_ipv4['address']=='172.17.0.4'
+
+ 

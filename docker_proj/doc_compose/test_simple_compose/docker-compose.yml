@@ -1,0 +1,11 @@
+version: "3"
+services:
+  web:
+    image: myweb:0.1
+    environment:
+      var1: webvar
+
+  db:
+    image: mydb:0.1
+    environment:
+      var1: dbvar
