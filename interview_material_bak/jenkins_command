@@ -39,30 +39,86 @@
 # Continuous Deployment
   Continuous Deployment is the automated release of code into the staging or development process after it has passed the CI stage’s testing.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Jenkins CLI help:
+  java -jar jenkins-cli.jar -s http://172.17.0.2:8080/jenkins/
 
 # Jenkins CLI, run a build:
   java -jar jenkins-cli.jar -s <jenkins url> -auth <jenkins user>:<jenkins password> build <Jenkins project>
   
   java -jar jenkins-cli.jar -s http://172.17.0.2:8080/jenkins/ -auth saif:Snaqvi01 build Maven-project
+
+
+=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=
+
+Two ways to install plugin:
+
+1. Manage Jenkins -> Manage Plugin.
+   search and install.
+   restart jenkins.
+
+2. Download the particular .hpi file.
+   Copy inside JENKINS_HOME/plugins/.
+   restart jenkins.
+
+3. Manage Jenkins -> Manage Plugin -> Advanced
+   Upload Plugin
+
+4. Using jenkins-cli.jar
+   java -jar jenkins-cli.jar -s http://172.17.0.2:8080/jenkins/ -auth admin:Snaqvi01 install-plugin role-strategy:3.2.0
+
+=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=
+
+
+# Explain the code for pipeline in Jenkins.
+  Pipeline-as-a-code is a strategy or collection of features that allows you to keep the CI/CD workflow logic throughout the source code repository despite making extra Jenkins branch configurations.
+
+# What is meant by agent directive in jenkins.
+  Agents are required for all pipelines. The agent creates a workspace for the pipeline, including source control checkout files and other required working files.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
