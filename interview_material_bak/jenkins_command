@@ -75,6 +75,26 @@ Two ways to install plugin:
 # What is meant by agent directive in jenkins.
   Agents are required for all pipelines. The agent creates a workspace for the pipeline, including source control checkout files and other required working files.
 
+# When working on pipeline when the second job fails what to do
+  Using "restart from level" command.
+
+# Change a jenkins port
+  java -jar Jenkins.war –httpPort=8282.
+
+=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=
+
+
+# Ways to build a jenkins project.
+  1. Manual build.
+  2. Using scheduling.
+  3. Triggered by Using token using browser.
+  4. Triggered by some other project (upstream, downstream).
+  5. Using cli.
+  6. Poll scm (jenkins will monitor git for any commit using a cron schedule)
+
+
+# Chain projects can be created in Build triggers (upstream project) and post build action (downstream project)
+  Refer TestChainProject/s in ubuntu_ins container.
 
 
 
@@ -87,7 +107,19 @@ Two ways to install plugin:
 
 
 
+Important plugin:
+role-strategy: to define roles based on the project/employee type
 
+Manage Jenkins -> Configure global security -> Role based strategy
+
+# To define roles.
+  Goto Manage Jenkins -> Configure global security -> Manage and assign roles -> Manage Roles
+
+# To assign roles.
+  Goto Manage Jenkins -> Configure global security -> Manage and assign roles -> Assign Roles
+
+
+=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=
 
 
 
