@@ -122,6 +122,8 @@ Manage Jenkins -> Configure global security -> Role based strategy
 =-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=
 
 
+# Deploy plugin is used to deploy war/ear file. Please refer AutomatedTestDeployment in ubuntu_ins jenkins container.
+[Note]: If tomcat and jenkins are running on same machine. You need to run them on separate ports.
 
 
 
