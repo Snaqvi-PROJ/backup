@@ -39,30 +39,116 @@
 # Continuous Deployment
   Continuous Deployment is the automated release of code into the staging or development process after it has passed the CI stage’s testing.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Jenkins CLI help:
+  java -jar jenkins-cli.jar -s http://172.17.0.2:8080/jenkins/
 
 # Jenkins CLI, run a build:
   java -jar jenkins-cli.jar -s <jenkins url> -auth <jenkins user>:<jenkins password> build <Jenkins project>
   
   java -jar jenkins-cli.jar -s http://172.17.0.2:8080/jenkins/ -auth saif:Snaqvi01 build Maven-project
+
+
+=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=
+
+Two ways to install plugin:
+
+1. Manage Jenkins -> Manage Plugin.
+   search and install.
+   restart jenkins.
+
+2. Download the particular .hpi file.
+   Copy inside JENKINS_HOME/plugins/.
+   restart jenkins.
+
+3. Manage Jenkins -> Manage Plugin -> Advanced
+   Upload Plugin
+
+4. Using jenkins-cli.jar
+   java -jar jenkins-cli.jar -s http://172.17.0.2:8080/jenkins/ -auth admin:Snaqvi01 install-plugin role-strategy:3.2.0
+
+=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=
+
+
+# Explain the code for pipeline in Jenkins.
+  Pipeline-as-a-code is a strategy or collection of features that allows you to keep the CI/CD workflow logic throughout the source code repository despite making extra Jenkins branch configurations.
+
+# What is meant by agent directive in jenkins.
+  Agents are required for all pipelines. The agent creates a workspace for the pipeline, including source control checkout files and other required working files.
+
+# When working on pipeline when the second job fails what to do
+  Using "restart from level" command.
+
+# Change a jenkins port
+  java -jar Jenkins.war –httpPort=8282.
+
+=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=
+
+
+# Ways to build a jenkins project.
+  1. Manual build.
+  2. Using scheduling.
+  3. Triggered by Using token using browser.
+  4. Triggered by some other project (upstream, downstream).
+  5. Using cli.
+  6. Poll scm (jenkins will monitor git for any commit using a cron schedule)
+
+
+# Chain projects can be created in Build triggers (upstream project) and post build action (downstream project)
+  Refer TestChainProject/s in ubuntu_ins container.
+
+
+
+
+
+
+
+
+
+
+
+
+Important plugin:
+role-strategy: to define roles based on the project/employee type
+
+Manage Jenkins -> Configure global security -> Role based strategy
+
+# To define roles.
+  Goto Manage Jenkins -> Configure global security -> Manage and assign roles -> Manage Roles
+
+# To assign roles.
+  Goto Manage Jenkins -> Configure global security -> Manage and assign roles -> Assign Roles
+
+
+=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=
+
+
+# Deploy plugin is used to deploy war/ear file. Please refer AutomatedTestDeployment in ubuntu_ins jenkins container.
+[Note]: If tomcat and jenkins are running on same machine. You need to run them on separate ports.
+
+# Notification plugin is used to notify about the build status notification in json/xml format.
+
+
+# Delivery pipeline view plugin is used to visualise the workflow of our project build
+  Refer SampleBuild/Deploy/Test job on ubuntu_ins
+
+
+
+=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=
+
+# Scripted pipeline: Must know groovy syntax, starts as:
+  {
+    node
+    //
+  }
+
+# Declarative pipeline: Predefined syntax, easier to use, starts as:
+  pipeline {
+     agent
+     
+     stage{
+     //
+     }
+  }
+
 
 
