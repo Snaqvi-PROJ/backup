@@ -1,0 +1,88 @@
+# svn is a central version control system.
+
+# Working copy is a direcyory that is under version control.
+
+# Steps for creating working copy:
+  1. import repository: To import repository name(remote) in directory(saif) local:
+  svn import saif http://svn:8080/repos/saif/remote -m "your comment"
+  
+  2. Checkout repository from robot:
+  svn co http://svn:8080/repos/saif/remote saif
+
+# Basic work cycle:
+  1. Update your working copy.
+     svn up
+
+  2. Add the file.
+     svn add filename
+
+  3. Check status of the changes.
+     svn st
+
+  4. Commit your changes.
+     svn ci -m "comment"
+
+
+=-=-=-=-=-=-=-=--=-=-=-=-=-=--=-=-=-=-
+
+svn symbols and there meaning
+
+Sign	Meaning
+A	Item is scheduled for addition.
+D	Item is scheduled for deletion.
+M	Item hsa been modified.
+C	Item is in conflict w/ updates from repository.
+X	Item is related to external defs
+I	Item is ignored.
+?	Item is not under version control.
+!	Item missing / co interrupted.
+
+
+# svn import: recursively commits a copy of PATH to URL.
+
+# svn log: See the log within the working copy.
+
+# svn log -r <revision>: See the log for a specific revision.
+
+# svn log [path]: For searching log outside your working copy.
+
+# svn cleanup: recursively cleanup a working copy.
+
+# svn di: Displays the differences between two paths.
+
+# svn resolved: Removes "conflicted" state on working copy files or directories.
+
+# svn lock: locks a file.
+
+# svn unlock: unlocks a file.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
