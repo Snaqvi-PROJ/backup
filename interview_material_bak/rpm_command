@@ -1,0 +1,95 @@
+# RPM: redhat package manager, THis is a default packager for CentOS, RHEL, Fedora. RPM makes it easier for you to distribute, manage, and update software that you create for Red Hat Enterprise Linux, CentOS, and Fedora
+
+# Some dependencies for rpm are: rpm-build, rpmlint, make, python, rpmdevtools etc..
+
+# With rpm you can:
+1. install, reinstall, remove, upgrade and verify package.
+2. use database of installed packages to query and verify.
+3. Add package to yum repositories.
+4. Digitally sign on the packages.
+
+# Craete a package:
+
+# rpmdev-setuptree : Create a source structure for the package in $HOME.
+# rpmbuild -ba hello-world.spec : Command to build the package.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Important directories and there meaning:
+
+Directory 		Purpose
+
+BUILD 			When packages are built, various %buildroot directories are created here. This is useful for investigating a failed build if the logs output do not provide enough information.
+
+RPMS			Binary RPMs are created here, in subdirectories for different architectures, for example in subdirectories x86_64 and noarch.
+
+SOURCES		Here, the packager puts compressed source code archives and patches. The rpmbuild command looks for them here.
+
+SPECS			The packager puts SPEC files here.
+
+SRPMS			When rpmbuild is used to build an SRPM instead of a binary RPM, the resulting SRPM is created here.
+
+
+# SPEC file
+
+A SPEC file can be thought of as a "recipe" that the rpmbuild utility uses to actually build an rpm. Sections in the spec file are defined as Preamble and body.
+
+Preamble contains a series of data which is used in body section:
+Name, Version, Release, Summary, License, URL, Source0, BuildArch, Requires etc..
+
+Some spec directive of body section is:
+
+%description: A full description of software packaged in RPM.
+%prep: Command/s to prepare the software to be built, for example unpacking the archive in Source0.
+%build: Building the software.
+%install: Copy build artifacts from %builddir to %buildroot.
+%files: List of files which need to be installed on user system.
+%changelog: Record of chages.
+%setup can be used to build the package with source code tarballs.
+%_topdir: rpmbuild directory can be overwritten using this macro
+%pre, %post, %preun, %postun is used before, after installing and uninstalling the packages simultaneously.
+
+
+--
+
+# An rpm macro is a straight text substitution that can be conditionally assigned based on the optional evaluation of a statement when certain built-in functionality is used.
+
+# To define a macro use:
+%global <name>[(opts)] <body>
+
+=-=-=-=-=-=--=-=-=-=-=--=-=-=-=-=-=-=-=-=
+
+# RPMs are built with rpmbuild command.
+1. Building a source RPM.
+   Source rpm will include spec file, source code etc.
+   Command: rpmbuild -bs _SPECFILE_
+
+2. Building a binary RPM.
+   Rebuilding it from SRPM using: rpmbuild --rebuild
+   Building a binary rpm: rpmbuild -bb
+
+# rpm quality is checked by using rpmlint tool, this tool runs on spec file and rpm too.
+  Example: rpmlint hello.spec, rpmlint hello-1.1.el7.src.rpm.
+
+=-=-=-=-=-=--=-=-=-=-=--=-=-=-=-=-=-=-=-=
+
+There are three ways to sign a package:
+
+-> Adding a signature to an already existing package.
+-> Replacing the signature on an already existing package.
+-> Signing a package at build-time.
+
+rpm --adsign <rpm name>
+rpm --checksign <rpm name>
+rpm --resign <rpm name>
+
+# Build time signing of package:
+  rpmbuild -ba --sign blather-7.9.spec
+
+=-=-=-=-=-=--=-=-=-=-=--=-=-=-=-=-=-=-=-=
+
+rpm -ql : command is used to check the payload of rpm
+rpm -qf --queryformat=${version} <rpm name>: query for any particular macro valio
+rpm2cpio: convert rpm to source
+
+
