@@ -1,0 +1,9 @@
+- name: Check that you can connect (GET) to a page and it returns a status 200 - test-server1
+  ansible.builtin.uri:
+    url: https://api.chucknorris.io/jokes/random
+    method: GET
+    validate_certs: False
+  register: results
+
+- debug:
+    var: results.json.value

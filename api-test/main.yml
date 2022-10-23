@@ -1,0 +1,8 @@
+---
+
+- name: Execute api
+  hosts: localhost
+  roles:
+    - test-server1
+    - test-server2
+    - test-server3
